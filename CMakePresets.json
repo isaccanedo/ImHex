@@ -1,0 +1,61 @@
+{
+  "version": 2,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 20,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "base",
+      "displayName": "Base",
+      "description": "Base configuration for all builds",
+      "hidden": true,
+      "binaryDir": "${sourceDir}/build/${presetName}",
+      "generator": "Ninja",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "CMAKE_C_COMPILER": "gcc",
+        "CMAKE_CXX_COMPILER": "g++",
+        "IMHEX_PATTERNS_PULL_MASTER": "ON",
+        "CMAKE_INSTALL_PREFIX": "./install",
+        "USE_SYSTEM_CAPSTONE": "ON",
+        "IMHEX_USE_DEFAULT_BUILD_SETTINGS": "ON"
+      }
+    },
+    {
+      "name": "x86_64",
+      "displayName": "x86_64 Build",
+      "description": "x86_64 build",
+      "inherits": [ "base" ]
+    },
+    {
+      "name": "xcode",
+      "inherits": [ "base" ],
+      
+      "displayName": "Xcode",
+      "description": "Xcode with external compiler override",
+      "generator": "Xcode",
+      
+      "cacheVariables": {
+        "CMAKE_C_COMPILER": "clang",
+
+        "CMAKE_CXX_COMPILER": "clang++",
+        "CMAKE_CXX_FLAGS": "-fexperimental-library -Wno-shorten-64-to-32 -Wno-deprecated-declarations",
+
+        "IMHEX_IDE_HELPERS_OVERRIDE_XCODE_COMPILER": "ON"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+        "name": "x86_64",
+        "description": "x86_64 build",
+        "configurePreset": "x86_64",
+        "targets": [ "imhex_all" ]
+    }
+  ],
+  "testPresets": [
+
+  ]
+}

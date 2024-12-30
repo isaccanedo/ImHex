@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=ImHex
+Comment=ImHex Hex Editor
+GenericName=Hex Editor
+Exec=imhex %U
+Icon=imhex
+Type=Application
+StartupNotify=true
+Categories=Development;IDE;
+StartupWMClass=imhex
+Keywords=static-analysis;reverse-engineering;disassembler;disassembly;hacking;forensics;hex-editor;cybersecurity;security;binary-analysis;
+MimeType=application/vnd.imhex.proj;
